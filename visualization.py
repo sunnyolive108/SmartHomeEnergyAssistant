@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import pandas as pd
 
 def plot_consumption_vs_hour(df):
     plt.figure(figsize=(10, 6))
