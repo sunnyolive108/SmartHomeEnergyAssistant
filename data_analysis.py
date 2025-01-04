@@ -2,8 +2,15 @@ import sqlite3
 import pandas as pd
 import os
 from sklearn.model_selection import train_test_split
-from sklearn.linear_model import LinearRegression
+from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_squared_error, r2_score
+import visualization  # Importiere dein Visualisierungsmodul
+
+# h = Stunde | w = Wochentag (0 = Montag bis 6 = Sonntag)
+tag = {0: 'Montag', 1: 'Dienstag', 2: 'Mittwoch', 3: 'Donnerstag', 
+       4: 'Freitag', 5: 'Samstag', 6: 'Sonntag'}
+h = 15
+w = 5
 
 # Ordnerpfad der aktuellen Datei ermitteln
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -30,8 +37,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 print(f"Trainingsdaten: {len(X_train)}, Testdaten: {len(X_test)}")
 
+# Nach dem Vorbereiten der Daten, aber vor dem Trainieren des Modells:
+visualization.visualize_energy_consumption(df)
+
 # Modell erstellen und trainieren
-model = LinearRegression()
+model = RandomForestRegressor(n_estimators=100, random_state=42)
 model.fit(X_train, y_train)  # Kein Reshaping mehr nötig, da wir zwei Features haben
 
 # Vorhersagen auf den Testdaten machen
@@ -43,9 +53,13 @@ r2 = r2_score(y_test, y_pred)
 
 print(f"Mean squared error: {mse}")
 print(f"R^2: {r2}")
-import pandas as pd
 
 # Einfache Vorhersage machen 
-vorhersage_df = pd.DataFrame({'hour': [14], 'day_of_week': [5]})
+vorhersage_df = pd.DataFrame({'hour': [h], 'day_of_week': [w]})
 vorhersage = model.predict(vorhersage_df)
-print(f"Vorhersage für {vorhersage_df['hour'][0]} Uhr am {vorhersage_df['day_of_week'][0]}: {vorhersage[0]} kW")
+print(f"Vorhersage für {h} Uhr am {tag[w]}: {vorhersage[0]:.2f} kW")
+
+# Feature Importance
+importances = model.feature_importances_
+for i, v in enumerate(importances):
+    print(f'Feature: {X.columns[i]}, Score: {v}')
