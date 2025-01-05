@@ -7,3 +7,7 @@ Edge Computing: Simulates energy consumption data collection using a local devic
 Machine Learning: Analyzes patterns and identifies energy-saving opportunities.  
 Blockchain: Secures and verifies consumption data for transparency.  
 Serverless Architecture: Provides backend services for analysis and recommendations.  
+
+## Blockchain Deployment
+Truffle: playing around with saving the data of the Assistant to the blockchain
+first fort educational purposes ONLY :P
