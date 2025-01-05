@@ -43,7 +43,7 @@
 
 // require('dotenv').config();
 // const { MNEMONIC, PROJECT_ID } = process.env;
-
+const ganache = require("ganache");
 // const HDWalletProvider = require('@truffle/hdwallet-provider');
 
 module.exports = {
@@ -65,9 +65,10 @@ module.exports = {
     // options below to some value.
     //
      development: {
-      host: "127.0.0.1",     // Localhost (default: none)
-      port: 7545,            // Standard Ethereum port (default: none)
-      network_id: "*",       // Any network (default: none)
+      provider: ganache.provider(),
+    //   host: "127.0.0.1",     // Localhost (default: none)
+    //  port: 7545,            // Standard Ethereum port (default: none)
+      network_id: "1736058255312",       // Any network (default: none)
      },
     //
     // An additional network, but with some advanced options…

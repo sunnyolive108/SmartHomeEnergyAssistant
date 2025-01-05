@@ -8,93 +8,21 @@ def get_web3_connection():
     return w3
 
 def get_contract(w3):
-    contract_abi = [
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "name": "consumptions",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "timestamp",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "value",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "_timestamp",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "_value",
-              "type": "uint256"
-            }
-          ],
-          "name": "addConsumption",
-          "outputs": [],
-          "stateMutability": "nonpayable",
-          "type": "function"
-        },
-        {
-          "inputs": [],
-          "name": "getConsumptionCount",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "view",
-          "type": "function"
-        },
-        {
-          "inputs": [
-            {
-              "internalType": "uint256",
-              "name": "_index",
-              "type": "uint256"
-            }
-          ],
-          "name": "getConsumption",
-          "outputs": [
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            },
-            {
-              "internalType": "uint256",
-              "name": "",
-              "type": "uint256"
-            }
-          ],
-          "stateMutability": "view",
-          "type": "function"
-        }
-    ]
-    contract_address = 'YOUR_CONTRACT_ADDRESS'  # Adresse deines Smart Contracts
+    contract_address = os.getenv('CONTRACT_ADDRESS')
+    if not contract_address:
+        raise ValueError("Contract address not set in environment variables.")
+    
+    contract_abi_path = os.getenv('CONTRACT_ABI_PATH')
+    if not contract_abi_path:
+        raise ValueError("Contract ABI path not set in environment variables.")
+    
+    with open(contract_abi_path, 'r') as file:
+        contract_abi = json.load(file)
+    
     return w3.eth.contract(address=contract_address, abi=contract_abi)
 
-# Hinweis: Der ABI und die Contract-Adresse werden hier hartcodiert. 
-# In der Praxis möchtest du diese vielleicht aus einer Konfigurationsdatei oder Umweltvariablen lesen.
-# Außerdem solltest du 'YOUR_CONTRACT_ADDRESS' durch die echte Adresse ersetzen, sobald du sie hast.
+# Hinweis: Du brauchst auch das `json` Modul, um die ABI-Datei zu lesen
+import json
 
 # Beispielaufruf der Funktion (kommentiert aus, da nicht notwendig)
 # print(fetch_from_blockchain(contract, 0))  # Ruft den ersten Verbrauch ab

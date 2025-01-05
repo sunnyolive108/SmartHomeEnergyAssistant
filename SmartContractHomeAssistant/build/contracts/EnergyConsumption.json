@@ -23,7 +23,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -54,7 +55,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     },
     {
       "inputs": [
@@ -78,7 +80,8 @@
         }
       ],
       "stateMutability": "view",
-      "type": "function"
+      "type": "function",
+      "constant": true
     }
   ],
   "metadata": "{\"compiler\":{\"version\":\"0.8.21+commit.d9974bed\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_timestamp\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_value\",\"type\":\"uint256\"}],\"name\":\"addConsumption\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"consumptions\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"timestamp\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_index\",\"type\":\"uint256\"}],\"name\":\"getConsumption\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getConsumptionCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/EnergyConsumption.sol\":\"EnergyConsumption\"},\"evmVersion\":\"shanghai\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/EnergyConsumption.sol\":{\"keccak256\":\"0x45db313d7b9461f9f35309326d9ff1aa159777cbab02a7ad023b1fc00d5182e9\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://4f684606772448eb1be4d22283eb2d97fd8bf4eec4793c9073c931ab6b4856ac\",\"dweb:/ipfs/QmUfgdp7EeuQtu3AtoJxrxdfe7N2WN5Fy8PtXSMXt1sRDt\"]}},\"version\":1}",
@@ -2226,9 +2229,23 @@
     "name": "solc",
     "version": "0.8.21+commit.d9974bed.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "1736058001537": {
+      "events": {},
+      "links": {},
+      "address": "0x33ea91CCB65E23597e247fb94d4BC2Fb7D0FD44A",
+      "transactionHash": "0x6cc49a0d6846cdb35fbbdab3f14ab3ebafa32a685e2beb87dba1841d4097a464"
+    },
+    "1736058255312": {
+      "events": {},
+      "links": {},
+      "address": "0x6F4E6f4Dd3400bdCC75A8269AA9A30cCba54455f",
+      "transactionHash": "0xb1d7480dacdca800865bf1f40eb1ce22e237d8f45286124fdb7cca68e2e20af2"
+    }
+  },
   "schemaVersion": "3.4.16",
-  "updatedAt": "2025-01-05T05:40:16.777Z",
+  "updatedAt": "2025-01-05T06:24:19.574Z",
+  "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",
     "methods": {},
