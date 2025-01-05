@@ -11,5 +11,5 @@ Serverless Architecture: Provides backend services for analysis and recommendati
 ## Blockchain Deployment  
 Truffle: playing around with saving the data of the Assistant to the blockchain   
 - first for educational purposes ONLY :P  
-Update 01.05.25 - Transactions successfully   
+Update 01.05.25 7:55 - Transactions successfully   
 saved onto the bloickchain
