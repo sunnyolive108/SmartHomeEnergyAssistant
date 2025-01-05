@@ -1,5 +1,6 @@
 import os
 from web3 import Web3
+from dotenv import load_dotenv
 
 def get_web3_connection():
     w3 = Web3(Web3.HTTPProvider('http://localhost:7545'))
@@ -7,6 +8,7 @@ def get_web3_connection():
         raise ConnectionError("Konnte keine Verbindung zur Blockchain herstellen!")
     return w3
 
+load_dotenv()
 def get_contract(w3):
     contract_address = os.getenv('CONTRACT_ADDRESS')
     if not contract_address:

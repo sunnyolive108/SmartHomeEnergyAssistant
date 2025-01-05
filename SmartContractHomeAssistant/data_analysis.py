@@ -7,6 +7,7 @@ from sklearn.metrics import mean_squared_error, r2_score
 import visualization  # Importiere dein Visualisierungsmodul
 from web3 import Web3  # Zusätzlicher Import für Blockchain-Interaktion
 from blockchain_utils import get_web3_connection, get_contract
+from dotenv import load_dotenv
 
 # h = Stunde | w = Wochentag (0 = Montag bis 6 = Sonntag)
 tag = {0: 'Montag', 1: 'Dienstag', 2: 'Mittwoch', 3: 'Donnerstag', 
@@ -42,6 +43,7 @@ print(f"Trainingsdaten: {len(X_train)}, Testdaten: {len(X_test)}")
 # Nach dem Vorbereiten der Daten, aber vor dem Trainieren des Modells:
 visualization.visualize_energy_consumption(df)
 
+load_dotenv()  # Dies sollte vor dem Aufruf von get_contract() stehen
 # Blockchain-Integration
 w3 = get_web3_connection()
 contract = get_contract(w3)

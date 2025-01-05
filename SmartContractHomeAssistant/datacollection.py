@@ -4,6 +4,7 @@ import random
 import os
 from web3 import Web3
 from blockchain_utils import get_web3_connection, get_contract
+from dotenv import load_dotenv
 
 # Funktion zur Simulation von Energieverbrauchsdaten
 def simulate_consumption():
@@ -34,19 +35,19 @@ conn.close()
 
 print(f"[Simulierter] Verbrauch {consumption} kW um {timestamp} gespeichert.")
 
+load_dotenv()  # Dies sollte vor dem Aufruf von get_contract() stehen
 # Blockchain-Integration
 w3 = get_web3_connection()
 contract = get_contract(w3)
 
 # Funktion zum Hinzufügen der Daten zur Blockchain
-async def add_to_blockchain(timestamp, consumption):
-    accounts = await w3.eth.get_accounts()
-    tx_hash = await contract.functions.addConsumption(
+def add_to_blockchain(timestamp, consumption):
+    accounts = w3.eth.accounts  # Hier keine await notwendig
+    tx_hash = contract.functions.addConsumption(
         int(datetime.strptime(timestamp, "%Y-%m-%d %H:%M:%S").timestamp()),
         int(consumption * 1000)  # Umrechnung in Milliwatt für mehr Genauigkeit
     ).transact({'from': accounts[0]})
-    receipt = await w3.eth.wait_for_transaction_receipt(tx_hash)
+    receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
     print(f"Verbrauch auf Blockchain gespeichert: {receipt.transactionHash.hex()}")
 
-import asyncio
-asyncio.run(add_to_blockchain(timestamp, consumption))
+add_to_blockchain(timestamp, consumption)
