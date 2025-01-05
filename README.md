@@ -10,4 +10,4 @@ Serverless Architecture: Provides backend services for analysis and recommendati
 
 ## Blockchain Deployment  
 Truffle: playing around with saving the data of the Assistant to the blockchain   
-first fort educational purposes ONLY :P
+- first for educational purposes ONLY :P
